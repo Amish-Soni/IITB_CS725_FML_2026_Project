@@ -1,0 +1,15 @@
+# data and checkpoints are large / reproducible, keep them out of git
+data/
+checkpoints/
+*.pt
+*.pth
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
