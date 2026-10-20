@@ -30,3 +30,9 @@ reported but not trusted because of class imbalance.
 - [ ] Phase 4: frozen vs partial vs full at 1, 2, 5, 10%
 - [ ] Phase 4: cost vs performance plot (train time, trainable params)
 - [ ] Phase 5: data-starvation curve and crossover analysis
+
+## Learning rates
+Chosen on validation balanced accuracy, 10% subset, seed 0, imbalance=none, then reused for all
+sizes: scratch 3e-4, pretrained-full 1e-4, pretrained-partial 1e-4, pretrained-frozen 1e-2
+(swept 3e-5..1e-1; frozen peaked mid-grid). Limitation: single seed, so differences under
+about 0.01 are within noise.

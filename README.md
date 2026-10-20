@@ -9,9 +9,12 @@ Dataset: Chest X-Ray Pneumonia (Kermany et al.), model: ResNet-18.
 src/prepare_splits.py   build patient-safe, nested, stratified subsets
 src/data.py             dataset + transforms
 src/models.py           scratch / pretrained x full / partial / frozen
-src/train.py            train one config, append test metrics to results/results.csv
+src/train.py            train one config, append test metrics to a results CSV
+src/analyze.py          results CSVs -> tables + figures
+scripts/run_*.sh        experiment loops (LR sweep, imbalance, main grid, low-data)
 splits/                 generated CSVs (commit these so everyone uses identical splits)
-results/results.csv     one row per run (commit this)
+results/*.csv           one row per run (commit these)
+results/tables, figures analysis outputs (commit these)
 docs/NOTES.md           design decisions log (feeds the final report)
 ```
 
