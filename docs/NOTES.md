@@ -36,3 +36,13 @@ Chosen on validation balanced accuracy, 10% subset, seed 0, imbalance=none, then
 sizes: scratch 3e-4, pretrained-full 1e-4, pretrained-partial 1e-4, pretrained-frozen 1e-2
 (swept 3e-5..1e-1; frozen peaked mid-grid). Limitation: single seed, so differences under
 about 0.01 are within noise.
+
+## Imbalance handling (ablation: none / weighted loss / oversampling)
+2 models x {5%, 25%} x 3 seeds, LRs from the sweep. Pretrained: all three methods tied (test
+balanced accuracy within 0.006, much smaller than the seed std). Scratch: inconsistent (weighted
+best at 5%, oversample worst at 5% but fine at 25%, weighted worst at 25%). Mean validation
+balanced accuracy: none 0.960, oversample 0.958, weighted 0.956. No method gave a reliable gain,
+so the default is IMB=none (simplest, top validation score); we still report balanced accuracy,
+macro-F1, AUROC and per-class recall everywhere. Observation: test recall of NORMAL stays ~0.72-0.76
+for every method while validation balanced accuracy is ~0.96, which suggests a train/test
+distribution shift in the official split rather than a class-prior effect (not verified).
