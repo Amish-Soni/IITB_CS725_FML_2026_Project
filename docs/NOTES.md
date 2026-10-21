@@ -84,3 +84,32 @@ Test balanced accuracy (frozen / partial / full / scratch):
   (steps x measured sec/step, src/bench_step.py) and trainable parameters.
 - Caveats: 3 seeds; std at 1-5% is large (up to 0.08, scratch 2%: 0.14); learning rates were
   tuned at 10% data and reused at all sizes.
+
+## Cost vs performance
+Per-step cost measured with src/bench_step.py (batch 32, 224x224, GPU idle): full 104 ms,
+partial 44 ms, frozen 31 ms. Estimated training time to best epoch = steps x sec/step.
+- Partial fine-tuning is Pareto-better than full fine-tuning at all sizes (same or better accuracy
+  at 1/3-1/2 of the cost; at 5% it is ~2.4x cheaper, -0.02 accuracy, within noise).
+- At 10% data: partial 0.877 at ~6.1 s vs scratch 0.873 at ~21.7 s vs full 0.852 at ~16.2 s, so
+  partial matches scratch accuracy at ~3.5x less training cost.
+- Frozen (1,026 params) is cheapest at 1% (0.47 s) but ~6 points less accurate than partial; at
+  5-10% it needs more epochs (8.5 s vs 6.1 s at 10%) and stays less accurate, so it is dominated.
+- Caveats: estimate excludes patience epochs, data loading and validation; best_epoch is noisy;
+  3 seeds; one machine. Raw wall-clock (results CSV train_time_s) is not used.
+
+## Leakage checks (src/check_overlap.py, src/check_patient_ids.py)
+- Train pool vs val: no shared patient ids, file names or identical images (split by patient).
+- Train pool vs official test: 0 byte-identical images, 0 identical file names. 144 pneumonia and
+  81 normal ids are shared by *number* only:
+  - Pneumonia: the infection type in the file name never matches (0/144, vs 43% expected by
+    chance) and image numbers differ by hundreds (median gap 315). The dataset numbers bacterial
+    and viral patients separately, so `person1_bacteria_*` and `person1_virus_*` are different people.
+  - Normal: 0/81 shared ids have the same filename prefix; the pool copy is `IM-xxxx-*` while the
+    test copy is `NORMAL2-IM-xxxx-*`, i.e. two separate numbering schemes reusing the same numbers.
+  Conclusion: no evidence of patient overlap between the pool and the official test set.
+- Our patient key (`person{N}` / `IM-{N}` with the prefix dropped) merges patients that share a number
+  across subtypes/schemes into one group. This is conservative for train/val (groups are only larger,
+  so no leakage) but "unique patients" counts (pool 2,252, val 398, test 404) are underestimates.
+- Exact duplicate images exist within a split (pool 19, val 7, test 6), none across splits.
+- Not excluded: the same patient imaged under a different id; the dataset does not provide patient
+  identity, so absence of overlap is supported by the checks above but not guaranteed.
