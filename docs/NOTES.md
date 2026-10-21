@@ -49,53 +49,42 @@ macro-F1, AUROC and per-class recall everywhere. Observation: test recall of NOR
 for every method while validation balanced accuracy is ~0.96, which suggests a train/test
 distribution shift in the official split rather than a class-prior effect (not verified).
 
-## Main grid: scratch vs pretrained (full fine-tune), IMB=none, 3 seeds
-Test balanced accuracy (mean): 1%: 0.826 vs 0.539, 2%: 0.816 vs 0.599, 5%: 0.860 vs 0.818,
-10%: 0.852 vs 0.873, 25%: 0.846 vs 0.849, 50%: 0.876 vs 0.889, 100%: 0.894 vs 0.879
-(pretrained vs scratch). 
-Pre-training gives a large, clearly significant advantage at 1-2% data
-(gap +0.29 / +0.22; scratch near chance at 1%, very unstable at 2% with std 0.17). At 5% the
-gap (+0.04) is within seed noise. From 5-10% upwards the two are statistically tied (scratch is
-slightly ahead at 10%, -0.02). 
-Crossover: between 2% and 5% of the training data, i.e. between 89 and 221 training images
-(training pool = 4,420 images: 1,129 NORMAL / 3,291 PNEUMONIA; subsets keep the 1:3 ratio).
-The 1% subset has only 44 images (11 NORMAL, 33 PNEUMONIA), which explains why scratch is near
-chance there.; caveat: 3 seeds only. 
-AUROC is higher for pretrained at every
-size (e.g. 0.933 vs 0.673 at 1%, 0.985 vs 0.978 at 100%), so the ranking quality advantage
-persists even where balanced accuracy at threshold 0.5 is tied. 
-Recall of NORMAL stays at 0.66-0.79 for pretrained at all sizes (see imbalance notes). 
-Wall-clock times are noisy (depend on early-stopping epoch and GPU load) and are not used for the cost comparison.
+## Main grid: scratch vs pretrained (full fine-tune), IMB=none
+Seeds: 5 at 1/2/5/10% (seeds 0-4), 3 at 25/50/100% (seeds 0-2). Test balanced accuracy mean,
+pretrained vs scratch: 1%: 0.809 vs 0.607, 2%: 0.819 vs 0.560, 5%: 0.847 vs 0.833,
+10%: 0.869 vs 0.816, 25%: 0.846 vs 0.849, 50%: 0.876 vs 0.889, 100%: 0.894 vs 0.879.
+- Clear pre-training advantage only at 1-2% (gap +0.20 / +0.26, ~4 SE). From 5% up the gap is
+  within seed noise. Crossover: between 2% and 5% of the training pool (89-221 images).
+- The scratch advantage at 10% seen with 3 seeds (-0.02) disappeared with 5 seeds (+0.05, within
+  noise): 3 seeds were not enough at small sizes.
+- Pre-training also reduces variance: seed std at 1-10% is 0.02-0.04 (pretrained) vs 0.07-0.13 (scratch).
+- AUROC is higher for pretrained at every size (0.928 vs 0.712 at 1%, 0.969 vs 0.943 at 10%,
+  0.985 vs 0.978 at 100%).
 
-## Low-data deep dive (1/2/5/10%, 3 seeds, IMB=none, 30 epochs, patience 7)
+## Low-data strategies (1/2/5/10%, 5 seeds, 30 epochs, patience 7)
 Test balanced accuracy (frozen / partial / full / scratch):
-1%: 0.763 / 0.827 / 0.825 / 0.539    2%: 0.787 / 0.838 / 0.816 / 0.599
-5%: 0.817 / 0.839 / 0.860 / 0.818    10%: 0.831 / 0.877 / 0.852 / 0.873
-- Any pretrained strategy beats scratch by 0.2-0.3 at 1-2%; scratch catches up by 5-10%.
-- Partial (last block + head) is statistically tied with full fine-tuning at every size
-  (small edge at 10%: 0.877 +/- 0.010 vs 0.852 +/- 0.007) with 8.4M vs 11.2M trainable params.
-- Frozen backbone (1,026 trainable params) is the lowest pretrained strategy at every size; clearly
-  worse than partial at 1-2% (-0.06 / -0.05), overlapping within noise at 5-10% (std ~0.04).
-  Its AUROC (0.91-0.94) is closer to the others than its balanced accuracy.
-- Hypothesis that frozen gives near-best accuracy at tiny cost is NOT supported.
-- Cost metric: raw wall-clock time (77-160 s everywhere) is dominated by validation (~800 images
-  per epoch), data loading and early-stopping epoch, not by compute, and shows no saving for
-  frozen. Cost is therefore reported as estimated training time to the best epoch
-  (steps x measured sec/step, src/bench_step.py) and trainable parameters.
-- Caveats: 3 seeds; std at 1-5% is large (up to 0.08, scratch 2%: 0.14); learning rates were
-  tuned at 10% data and reused at all sizes.
+1%: 0.711 / 0.835 / 0.809 / 0.607    2%: 0.782 / 0.828 / 0.819 / 0.560
+5%: 0.826 / 0.847 / 0.847 / 0.833    10%: 0.827 / 0.871 / 0.868 / 0.816
+- Partial (last block + head) is statistically tied with full fine-tuning at every size.
+- Frozen (1,026 trainable params) is the lowest pretrained strategy: much worse and unstable at
+  1% (0.711 +/- 0.109), within noise of the others at 5-10% but 0.02-0.04 lower on average.
+- Hypothesis "frozen gives near-best accuracy at tiny cost" is not supported.
 
 ## Cost vs performance
-Per-step cost measured with src/bench_step.py (batch 32, 224x224, GPU idle): full 104 ms,
-partial 44 ms, frozen 31 ms. Estimated training time to best epoch = steps x sec/step.
-- Partial fine-tuning is Pareto-better than full fine-tuning at all sizes (same or better accuracy
-  at 1/3-1/2 of the cost; at 5% it is ~2.4x cheaper, -0.02 accuracy, within noise).
-- At 10% data: partial 0.877 at ~6.1 s vs scratch 0.873 at ~21.7 s vs full 0.852 at ~16.2 s, so
-  partial matches scratch accuracy at ~3.5x less training cost.
-- Frozen (1,026 params) is cheapest at 1% (0.47 s) but ~6 points less accurate than partial; at
-  5-10% it needs more epochs (8.5 s vs 6.1 s at 10%) and stays less accurate, so it is dominated.
+Per-step cost (src/bench_step.py, batch 32, 224x224): full 104 ms, partial 44 ms, frozen 31 ms.
+Estimated training time to best epoch = steps x sec/step:
+1%: frozen 0.39 s / partial 0.86 / full 2.14 / scratch 0.48
+2%: 1.22 / 1.79 / 2.50 / 0.83      5%: 4.40 / 3.08 / 8.24 / 7.74      10%: 7.03 / 4.95 / 15.4 / 20.0
+- Partial is Pareto-better than full at all sizes (same accuracy, 1.4-3x cheaper).
+- At 10%: partial 0.871 at ~4.9 s vs scratch 0.816 at ~20 s: ~4x cheaper, equal or better
+  accuracy (difference within noise).
+- Frozen is cheapest at 1-2% but 0.04-0.12 less accurate than partial; at 5-10% it needs more
+  steps (4.4 s / 7.0 s) and is still less accurate, so it is dominated.
+- Raw wall-clock (train_time_s) is not used: it is dominated by validation, data loading, early
+  stopping and machine load (one run in the frozen-5% cell took thousands of seconds,
+  probably a machine suspend).
 - Caveats: estimate excludes patience epochs, data loading and validation; best_epoch is noisy;
-  3 seeds; one machine. Raw wall-clock (results CSV train_time_s) is not used.
+  one machine; LRs tuned on the 10% subset only.
 
 ## Leakage checks (src/check_overlap.py, src/check_patient_ids.py)
 - Train pool vs val: no shared patient ids, file names or identical images (split by patient).

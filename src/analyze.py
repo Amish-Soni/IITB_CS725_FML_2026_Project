@@ -113,7 +113,7 @@ def grid():
     ax.set_xscale("log"); ax.set_xticks(sorted(d.pct.unique()))
     ax.set_xticklabels([f"{p}%" for p in sorted(d.pct.unique())])
     ax.legend(frameon=False)
-    style(ax, "training data used (log scale)", "test balanced accuracy (mean ± std, 3 seeds)",
+    style(ax, "training data used (log scale)", "test balanced accuracy (mean ± std over seeds)",
           "Data-starvation curve")
     fig.tight_layout(); fig.savefig(FIG / "data_starvation_curve.png", dpi=200)
 

@@ -1,0 +1,331 @@
+scratch/full pct=1 seed=3 n_train=44 counts=[11, 33] lr=0.0003 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.4761  val_bal_acc=0.5000
+  epoch  2  train_loss=0.5048  val_bal_acc=0.5042
+  epoch  3  train_loss=0.3383  val_bal_acc=0.5085
+  epoch  4  train_loss=0.2567  val_bal_acc=0.5043
+  epoch  5  train_loss=0.2658  val_bal_acc=0.5000
+  epoch  6  train_loss=0.1872  val_bal_acc=0.5000
+  epoch  7  train_loss=0.1565  val_bal_acc=0.5000
+  epoch  8  train_loss=0.1131  val_bal_acc=0.5000
+  epoch  9  train_loss=0.0862  val_bal_acc=0.5000
+  epoch 10  train_loss=0.1933  val_bal_acc=0.5364
+  epoch 11  train_loss=0.0782  val_bal_acc=0.7505
+  epoch 12  train_loss=0.1622  val_bal_acc=0.7057
+  epoch 13  train_loss=0.1788  val_bal_acc=0.6817
+  epoch 14  train_loss=0.0556  val_bal_acc=0.6787
+  epoch 15  train_loss=0.0579  val_bal_acc=0.6026
+  epoch 16  train_loss=0.0334  val_bal_acc=0.5091
+  epoch 17  train_loss=0.0923  val_bal_acc=0.5000
+  epoch 18  train_loss=0.1147  val_bal_acc=0.5000
+  early stop
+  TEST: {'acc': 0.75, 'bal_acc': 0.6915, 'macro_f1': 0.7004, 'auroc': 0.7459, 'recall_normal': 0.4573, 'recall_pneumonia': 0.9256}
+pretrained/full pct=1 seed=3 n_train=44 counts=[11, 33] lr=0.0001 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.4584  val_bal_acc=0.6597
+  epoch  2  train_loss=0.2737  val_bal_acc=0.8373
+  epoch  3  train_loss=0.1734  val_bal_acc=0.9054
+  epoch  4  train_loss=0.1090  val_bal_acc=0.9217
+  epoch  5  train_loss=0.1174  val_bal_acc=0.9273
+  epoch  6  train_loss=0.0784  val_bal_acc=0.9284
+  epoch  7  train_loss=0.0430  val_bal_acc=0.9349
+  epoch  8  train_loss=0.0522  val_bal_acc=0.9391
+  epoch  9  train_loss=0.0588  val_bal_acc=0.9419
+  epoch 10  train_loss=0.0801  val_bal_acc=0.9336
+  epoch 11  train_loss=0.0141  val_bal_acc=0.9290
+  epoch 12  train_loss=0.0157  val_bal_acc=0.9049
+  epoch 13  train_loss=0.0131  val_bal_acc=0.8816
+  epoch 14  train_loss=0.0120  val_bal_acc=0.8793
+  epoch 15  train_loss=0.0197  val_bal_acc=0.8793
+  epoch 16  train_loss=0.0085  val_bal_acc=0.8770
+  early stop
+  TEST: {'acc': 0.8285, 'bal_acc': 0.7739, 'macro_f1': 0.7935, 'auroc': 0.9534, 'recall_normal': 0.5556, 'recall_pneumonia': 0.9923}
+scratch/full pct=2 seed=3 n_train=89 counts=[23, 66] lr=0.0003 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.3863  val_bal_acc=0.5000
+  epoch  2  train_loss=0.3948  val_bal_acc=0.5000
+  epoch  3  train_loss=0.3265  val_bal_acc=0.5000
+  epoch  4  train_loss=0.2593  val_bal_acc=0.5000
+  epoch  5  train_loss=0.2332  val_bal_acc=0.5000
+  epoch  6  train_loss=0.1997  val_bal_acc=0.5000
+  epoch  7  train_loss=0.1261  val_bal_acc=0.5000
+  epoch  8  train_loss=0.1198  val_bal_acc=0.5000
+  early stop
+  TEST: {'acc': 0.375, 'bal_acc': 0.5, 'macro_f1': 0.2727, 'auroc': 0.7049, 'recall_normal': 1.0, 'recall_pneumonia': 0.0}
+pretrained/full pct=2 seed=3 n_train=89 counts=[23, 66] lr=0.0001 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.3575  val_bal_acc=0.5810
+  epoch  2  train_loss=0.2078  val_bal_acc=0.7879
+  epoch  3  train_loss=0.1278  val_bal_acc=0.8729
+  epoch  4  train_loss=0.1704  val_bal_acc=0.8816
+  epoch  5  train_loss=0.1095  val_bal_acc=0.8492
+  epoch  6  train_loss=0.0559  val_bal_acc=0.8000
+  epoch  7  train_loss=0.0334  val_bal_acc=0.7886
+  epoch  8  train_loss=0.0491  val_bal_acc=0.7955
+  epoch  9  train_loss=0.0294  val_bal_acc=0.8182
+  epoch 10  train_loss=0.0435  val_bal_acc=0.8659
+  epoch 11  train_loss=0.0142  val_bal_acc=0.9097
+  epoch 12  train_loss=0.0142  val_bal_acc=0.9370
+  epoch 13  train_loss=0.0035  val_bal_acc=0.9532
+  epoch 14  train_loss=0.0121  val_bal_acc=0.9541
+  epoch 15  train_loss=0.0036  val_bal_acc=0.9528
+  epoch 16  train_loss=0.0028  val_bal_acc=0.9525
+  epoch 17  train_loss=0.0019  val_bal_acc=0.9528
+  epoch 18  train_loss=0.0033  val_bal_acc=0.9526
+  epoch 19  train_loss=0.0131  val_bal_acc=0.9582
+  epoch 20  train_loss=0.0028  val_bal_acc=0.9593
+  epoch 21  train_loss=0.0071  val_bal_acc=0.9573
+  epoch 22  train_loss=0.0025  val_bal_acc=0.9530
+  epoch 23  train_loss=0.0011  val_bal_acc=0.9547
+  epoch 24  train_loss=0.0026  val_bal_acc=0.9545
+  epoch 25  train_loss=0.0014  val_bal_acc=0.9505
+  epoch 26  train_loss=0.0016  val_bal_acc=0.9497
+  epoch 27  train_loss=0.0014  val_bal_acc=0.9412
+  early stop
+  TEST: {'acc': 0.867, 'bal_acc': 0.8321, 'macro_f1': 0.8487, 'auroc': 0.9591, 'recall_normal': 0.6923, 'recall_pneumonia': 0.9718}
+scratch/full pct=5 seed=3 n_train=221 counts=[56, 165] lr=0.0003 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.3459  val_bal_acc=0.5000
+  epoch  2  train_loss=0.2268  val_bal_acc=0.5000
+  epoch  3  train_loss=0.1487  val_bal_acc=0.5000
+  epoch  4  train_loss=0.1828  val_bal_acc=0.8171
+  epoch  5  train_loss=0.2814  val_bal_acc=0.6796
+  epoch  6  train_loss=0.2612  val_bal_acc=0.7665
+  epoch  7  train_loss=0.1152  val_bal_acc=0.7411
+  epoch  8  train_loss=0.1532  val_bal_acc=0.8299
+  epoch  9  train_loss=0.1044  val_bal_acc=0.8980
+  epoch 10  train_loss=0.0744  val_bal_acc=0.7805
+  epoch 11  train_loss=0.0536  val_bal_acc=0.8380
+  epoch 12  train_loss=0.1152  val_bal_acc=0.8531
+  epoch 13  train_loss=0.0795  val_bal_acc=0.6359
+  epoch 14  train_loss=0.1034  val_bal_acc=0.9192
+  epoch 15  train_loss=0.1191  val_bal_acc=0.8807
+  epoch 16  train_loss=0.1356  val_bal_acc=0.8822
+  epoch 17  train_loss=0.0986  val_bal_acc=0.7424
+  epoch 18  train_loss=0.1114  val_bal_acc=0.7831
+  epoch 19  train_loss=0.0658  val_bal_acc=0.9052
+  epoch 20  train_loss=0.0815  val_bal_acc=0.9253
+  epoch 21  train_loss=0.0625  val_bal_acc=0.9246
+  epoch 22  train_loss=0.0414  val_bal_acc=0.8822
+  epoch 23  train_loss=0.0557  val_bal_acc=0.8850
+  epoch 24  train_loss=0.0249  val_bal_acc=0.8836
+  epoch 25  train_loss=0.0404  val_bal_acc=0.9249
+  epoch 26  train_loss=0.0424  val_bal_acc=0.9102
+  epoch 27  train_loss=0.0589  val_bal_acc=0.9131
+  early stop
+  TEST: {'acc': 0.8862, 'bal_acc': 0.8654, 'macro_f1': 0.875, 'auroc': 0.9554, 'recall_normal': 0.7821, 'recall_pneumonia': 0.9487}
+pretrained/full pct=5 seed=3 n_train=221 counts=[56, 165] lr=0.0001 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.2648  val_bal_acc=0.9186
+  epoch  2  train_loss=0.1228  val_bal_acc=0.8966
+  epoch  3  train_loss=0.0508  val_bal_acc=0.8975
+  epoch  4  train_loss=0.0544  val_bal_acc=0.9142
+  epoch  5  train_loss=0.0642  val_bal_acc=0.9523
+  epoch  6  train_loss=0.0350  val_bal_acc=0.8682
+  epoch  7  train_loss=0.0832  val_bal_acc=0.8892
+  epoch  8  train_loss=0.0423  val_bal_acc=0.9414
+  epoch  9  train_loss=0.0096  val_bal_acc=0.9355
+  epoch 10  train_loss=0.0261  val_bal_acc=0.9485
+  epoch 11  train_loss=0.0119  val_bal_acc=0.9510
+  epoch 12  train_loss=0.0082  val_bal_acc=0.9516
+  early stop
+  TEST: {'acc': 0.851, 'bal_acc': 0.8021, 'macro_f1': 0.8233, 'auroc': 0.9596, 'recall_normal': 0.6068, 'recall_pneumonia': 0.9974}
+scratch/full pct=10 seed=3 n_train=442 counts=[113, 329] lr=0.0003 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.4089  val_bal_acc=0.5000
+  epoch  2  train_loss=0.3091  val_bal_acc=0.5000
+  epoch  3  train_loss=0.2442  val_bal_acc=0.8935
+  epoch  4  train_loss=0.2335  val_bal_acc=0.6523
+  epoch  5  train_loss=0.1992  val_bal_acc=0.9028
+  epoch  6  train_loss=0.2767  val_bal_acc=0.8501
+  epoch  7  train_loss=0.2251  val_bal_acc=0.8948
+  epoch  8  train_loss=0.1513  val_bal_acc=0.8592
+  epoch  9  train_loss=0.1384  val_bal_acc=0.8792
+  epoch 10  train_loss=0.1440  val_bal_acc=0.7299
+  epoch 11  train_loss=0.1389  val_bal_acc=0.8336
+  epoch 12  train_loss=0.1278  val_bal_acc=0.9128
+  epoch 13  train_loss=0.0934  val_bal_acc=0.7877
+  epoch 14  train_loss=0.0690  val_bal_acc=0.9261
+  epoch 15  train_loss=0.0629  val_bal_acc=0.9399
+  epoch 16  train_loss=0.1282  val_bal_acc=0.9298
+  epoch 17  train_loss=0.1417  val_bal_acc=0.9438
+  epoch 18  train_loss=0.1333  val_bal_acc=0.9356
+  epoch 19  train_loss=0.0912  val_bal_acc=0.8605
+  epoch 20  train_loss=0.1039  val_bal_acc=0.9356
+  epoch 21  train_loss=0.0814  val_bal_acc=0.9395
+  epoch 22  train_loss=0.0495  val_bal_acc=0.9009
+  epoch 23  train_loss=0.0997  val_bal_acc=0.8987
+  epoch 24  train_loss=0.0788  val_bal_acc=0.9367
+  early stop
+  TEST: {'acc': 0.8109, 'bal_acc': 0.753, 'macro_f1': 0.7704, 'auroc': 0.9418, 'recall_normal': 0.5214, 'recall_pneumonia': 0.9846}
+pretrained/full pct=10 seed=3 n_train=442 counts=[113, 329] lr=0.0001 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.2916  val_bal_acc=0.7401
+  epoch  2  train_loss=0.1483  val_bal_acc=0.8952
+  epoch  3  train_loss=0.0963  val_bal_acc=0.8446
+  epoch  4  train_loss=0.0432  val_bal_acc=0.9501
+  epoch  5  train_loss=0.0392  val_bal_acc=0.9641
+  epoch  6  train_loss=0.0406  val_bal_acc=0.9390
+  epoch  7  train_loss=0.0179  val_bal_acc=0.9578
+  epoch  8  train_loss=0.0048  val_bal_acc=0.9601
+  epoch  9  train_loss=0.0204  val_bal_acc=0.9404
+  epoch 10  train_loss=0.0146  val_bal_acc=0.9604
+  epoch 11  train_loss=0.0304  val_bal_acc=0.9156
+  epoch 12  train_loss=0.0368  val_bal_acc=0.7705
+  early stop
+  TEST: {'acc': 0.9087, 'bal_acc': 0.8876, 'macro_f1': 0.8992, 'auroc': 0.9673, 'recall_normal': 0.8034, 'recall_pneumonia': 0.9718}
+scratch/full pct=1 seed=4 n_train=44 counts=[11, 33] lr=0.0003 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.7857  val_bal_acc=0.5000
+  epoch  2  train_loss=0.4934  val_bal_acc=0.5008
+  epoch  3  train_loss=0.3458  val_bal_acc=0.7132
+  epoch  4  train_loss=0.2675  val_bal_acc=0.5000
+  epoch  5  train_loss=0.2331  val_bal_acc=0.5000
+  epoch  6  train_loss=0.1561  val_bal_acc=0.5000
+  epoch  7  train_loss=0.1180  val_bal_acc=0.5000
+  epoch  8  train_loss=0.1599  val_bal_acc=0.5000
+  epoch  9  train_loss=0.1030  val_bal_acc=0.5000
+  epoch 10  train_loss=0.0592  val_bal_acc=0.5000
+  early stop
+  TEST: {'acc': 0.7356, 'bal_acc': 0.7261, 'macro_f1': 0.7222, 'auroc': 0.7955, 'recall_normal': 0.688, 'recall_pneumonia': 0.7641}
+pretrained/full pct=1 seed=4 n_train=44 counts=[11, 33] lr=0.0001 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.8609  val_bal_acc=0.5093
+  epoch  2  train_loss=0.7272  val_bal_acc=0.5490
+  epoch  3  train_loss=0.4458  val_bal_acc=0.6005
+  epoch  4  train_loss=0.4531  val_bal_acc=0.6478
+  epoch  5  train_loss=0.3116  val_bal_acc=0.7027
+  epoch  6  train_loss=0.2936  val_bal_acc=0.7635
+  epoch  7  train_loss=0.2210  val_bal_acc=0.7931
+  epoch  8  train_loss=0.1042  val_bal_acc=0.8308
+  epoch  9  train_loss=0.1029  val_bal_acc=0.8620
+  epoch 10  train_loss=0.0725  val_bal_acc=0.8825
+  epoch 11  train_loss=0.0417  val_bal_acc=0.9048
+  epoch 12  train_loss=0.0278  val_bal_acc=0.9137
+  epoch 13  train_loss=0.0463  val_bal_acc=0.9241
+  epoch 14  train_loss=0.0349  val_bal_acc=0.9351
+  epoch 15  train_loss=0.0144  val_bal_acc=0.9359
+  epoch 16  train_loss=0.0197  val_bal_acc=0.9437
+  epoch 17  train_loss=0.0235  val_bal_acc=0.9426
+  epoch 18  train_loss=0.0076  val_bal_acc=0.9465
+  epoch 19  train_loss=0.0240  val_bal_acc=0.9354
+  epoch 20  train_loss=0.0089  val_bal_acc=0.9308
+  epoch 21  train_loss=0.0065  val_bal_acc=0.9271
+  epoch 22  train_loss=0.0058  val_bal_acc=0.9280
+  epoch 23  train_loss=0.0032  val_bal_acc=0.9183
+  epoch 24  train_loss=0.0037  val_bal_acc=0.9191
+  epoch 25  train_loss=0.0028  val_bal_acc=0.9169
+  early stop
+  TEST: {'acc': 0.8446, 'bal_acc': 0.7962, 'macro_f1': 0.8162, 'auroc': 0.89, 'recall_normal': 0.6026, 'recall_pneumonia': 0.9897}
+scratch/full pct=2 seed=4 n_train=89 counts=[23, 66] lr=0.0003 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.7053  val_bal_acc=0.5017
+  epoch  2  train_loss=0.3649  val_bal_acc=0.5000
+  epoch  3  train_loss=0.2221  val_bal_acc=0.5023
+  epoch  4  train_loss=0.1802  val_bal_acc=0.5000
+  epoch  5  train_loss=0.1674  val_bal_acc=0.5000
+  epoch  6  train_loss=0.1307  val_bal_acc=0.5000
+  epoch  7  train_loss=0.1240  val_bal_acc=0.5000
+  epoch  8  train_loss=0.0698  val_bal_acc=0.5000
+  epoch  9  train_loss=0.0672  val_bal_acc=0.5000
+  epoch 10  train_loss=0.0398  val_bal_acc=0.5000
+  early stop
+  TEST: {'acc': 0.6282, 'bal_acc': 0.5043, 'macro_f1': 0.3939, 'auroc': 0.8065, 'recall_normal': 0.0085, 'recall_pneumonia': 1.0}
+pretrained/full pct=2 seed=4 n_train=89 counts=[23, 66] lr=0.0001 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.7132  val_bal_acc=0.6630
+  epoch  2  train_loss=0.4706  val_bal_acc=0.8136
+  epoch  3  train_loss=0.3473  val_bal_acc=0.8668
+  epoch  4  train_loss=0.2567  val_bal_acc=0.9000
+  epoch  5  train_loss=0.1192  val_bal_acc=0.9256
+  epoch  6  train_loss=0.1281  val_bal_acc=0.9495
+  epoch  7  train_loss=0.0454  val_bal_acc=0.9522
+  epoch  8  train_loss=0.0335  val_bal_acc=0.9419
+  epoch  9  train_loss=0.0293  val_bal_acc=0.9313
+  epoch 10  train_loss=0.0114  val_bal_acc=0.9247
+  epoch 11  train_loss=0.0419  val_bal_acc=0.9151
+  epoch 12  train_loss=0.0070  val_bal_acc=0.9037
+  epoch 13  train_loss=0.0110  val_bal_acc=0.8878
+  epoch 14  train_loss=0.0047  val_bal_acc=0.8787
+  early stop
+  TEST: {'acc': 0.8558, 'bal_acc': 0.8128, 'macro_f1': 0.8322, 'auroc': 0.9249, 'recall_normal': 0.641, 'recall_pneumonia': 0.9846}
+scratch/full pct=5 seed=4 n_train=221 counts=[56, 165] lr=0.0003 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.5239  val_bal_acc=0.5000
+  epoch  2  train_loss=0.2198  val_bal_acc=0.5000
+  epoch  3  train_loss=0.2643  val_bal_acc=0.5000
+  epoch  4  train_loss=0.2058  val_bal_acc=0.5000
+  epoch  5  train_loss=0.1827  val_bal_acc=0.8572
+  epoch  6  train_loss=0.1467  val_bal_acc=0.8579
+  epoch  7  train_loss=0.0960  val_bal_acc=0.8824
+  epoch  8  train_loss=0.0885  val_bal_acc=0.8926
+  epoch  9  train_loss=0.0780  val_bal_acc=0.9061
+  epoch 10  train_loss=0.0582  val_bal_acc=0.9293
+  epoch 11  train_loss=0.0401  val_bal_acc=0.8412
+  epoch 12  train_loss=0.0821  val_bal_acc=0.9122
+  epoch 13  train_loss=0.1295  val_bal_acc=0.7030
+  epoch 14  train_loss=0.0743  val_bal_acc=0.6597
+  epoch 15  train_loss=0.0543  val_bal_acc=0.9150
+  epoch 16  train_loss=0.0317  val_bal_acc=0.7293
+  epoch 17  train_loss=0.0255  val_bal_acc=0.8797
+  early stop
+  TEST: {'acc': 0.867, 'bal_acc': 0.8474, 'macro_f1': 0.8548, 'auroc': 0.8955, 'recall_normal': 0.7692, 'recall_pneumonia': 0.9256}
+pretrained/full pct=5 seed=4 n_train=221 counts=[56, 165] lr=0.0001 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.6484  val_bal_acc=0.8176
+  epoch  2  train_loss=0.2707  val_bal_acc=0.9073
+  epoch  3  train_loss=0.0768  val_bal_acc=0.9338
+  epoch  4  train_loss=0.0903  val_bal_acc=0.9290
+  epoch  5  train_loss=0.1570  val_bal_acc=0.6795
+  epoch  6  train_loss=0.0393  val_bal_acc=0.6977
+  epoch  7  train_loss=0.0316  val_bal_acc=0.8824
+  epoch  8  train_loss=0.0171  val_bal_acc=0.9430
+  epoch  9  train_loss=0.0173  val_bal_acc=0.9486
+  epoch 10  train_loss=0.0080  val_bal_acc=0.9534
+  epoch 11  train_loss=0.0056  val_bal_acc=0.9526
+  epoch 12  train_loss=0.0282  val_bal_acc=0.9528
+  epoch 13  train_loss=0.0130  val_bal_acc=0.9547
+  epoch 14  train_loss=0.0220  val_bal_acc=0.9473
+  epoch 15  train_loss=0.0043  val_bal_acc=0.9468
+  epoch 16  train_loss=0.0046  val_bal_acc=0.9542
+  epoch 17  train_loss=0.0110  val_bal_acc=0.9557
+  epoch 18  train_loss=0.0024  val_bal_acc=0.9465
+  epoch 19  train_loss=0.0042  val_bal_acc=0.9422
+  epoch 20  train_loss=0.0096  val_bal_acc=0.9534
+  epoch 21  train_loss=0.0058  val_bal_acc=0.9545
+  epoch 22  train_loss=0.0011  val_bal_acc=0.9456
+  epoch 23  train_loss=0.0044  val_bal_acc=0.9425
+  epoch 24  train_loss=0.0014  val_bal_acc=0.9436
+  early stop
+  TEST: {'acc': 0.8798, 'bal_acc': 0.8526, 'macro_f1': 0.8659, 'auroc': 0.9321, 'recall_normal': 0.7436, 'recall_pneumonia': 0.9615}
+scratch/full pct=10 seed=4 n_train=442 counts=[113, 329] lr=0.0003 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.3817  val_bal_acc=0.5000
+  epoch  2  train_loss=0.2407  val_bal_acc=0.5779
+  epoch  3  train_loss=0.2045  val_bal_acc=0.8937
+  epoch  4  train_loss=0.2074  val_bal_acc=0.9129
+  epoch  5  train_loss=0.1298  val_bal_acc=0.5228
+  epoch  6  train_loss=0.1778  val_bal_acc=0.8402
+  epoch  7  train_loss=0.1247  val_bal_acc=0.9143
+  epoch  8  train_loss=0.0972  val_bal_acc=0.9175
+  epoch  9  train_loss=0.1511  val_bal_acc=0.9370
+  epoch 10  train_loss=0.0980  val_bal_acc=0.9282
+  epoch 11  train_loss=0.0792  val_bal_acc=0.9289
+  epoch 12  train_loss=0.1166  val_bal_acc=0.8617
+  epoch 13  train_loss=0.1066  val_bal_acc=0.9100
+  epoch 14  train_loss=0.0803  val_bal_acc=0.8316
+  epoch 15  train_loss=0.0698  val_bal_acc=0.9107
+  epoch 16  train_loss=0.0523  val_bal_acc=0.9273
+  early stop
+  TEST: {'acc': 0.7804, 'bal_acc': 0.709, 'macro_f1': 0.7205, 'auroc': 0.9374, 'recall_normal': 0.4231, 'recall_pneumonia': 0.9949}
+pretrained/full pct=10 seed=4 n_train=442 counts=[113, 329] lr=0.0001 trainable=11,177,538 device=cuda
+  epoch  1  train_loss=0.5067  val_bal_acc=0.9460
+  epoch  2  train_loss=0.1055  val_bal_acc=0.8742
+  epoch  3  train_loss=0.0944  val_bal_acc=0.9406
+  epoch  4  train_loss=0.0640  val_bal_acc=0.9406
+  epoch  5  train_loss=0.0603  val_bal_acc=0.9549
+  epoch  6  train_loss=0.0372  val_bal_acc=0.9640
+  epoch  7  train_loss=0.0184  val_bal_acc=0.9501
+  epoch  8  train_loss=0.0248  val_bal_acc=0.9555
+  epoch  9  train_loss=0.0468  val_bal_acc=0.9566
+  epoch 10  train_loss=0.0274  val_bal_acc=0.9752
+  epoch 11  train_loss=0.0242  val_bal_acc=0.9782
+  epoch 12  train_loss=0.0168  val_bal_acc=0.9751
+  epoch 13  train_loss=0.0122  val_bal_acc=0.9771
+  epoch 14  train_loss=0.0230  val_bal_acc=0.9384
+  epoch 15  train_loss=0.0176  val_bal_acc=0.9802
+  epoch 16  train_loss=0.0110  val_bal_acc=0.9803
+  epoch 17  train_loss=0.0170  val_bal_acc=0.9768
+  epoch 18  train_loss=0.0044  val_bal_acc=0.9737
+  epoch 19  train_loss=0.0073  val_bal_acc=0.9686
+  epoch 20  train_loss=0.0062  val_bal_acc=0.9478
+  epoch 21  train_loss=0.0123  val_bal_acc=0.9415
+  epoch 22  train_loss=0.0087  val_bal_acc=0.9740
+  epoch 23  train_loss=0.0017  val_bal_acc=0.9712
+  early stop
+  TEST: {'acc': 0.9199, 'bal_acc': 0.8983, 'macro_f1': 0.9113, 'auroc': 0.98, 'recall_normal': 0.812, 'recall_pneumonia': 0.9846}
