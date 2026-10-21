@@ -102,3 +102,15 @@ Estimated training time to best epoch = steps x sec/step:
 - Exact duplicate images exist within a split (pool 19, val 7, test 6), none across splits.
 - Not excluded: the same patient imaged under a different id; the dataset does not provide patient
   identity, so absence of overlap is supported by the checks above but not guaranteed.
+
+### Paired comparison (pretrained - scratch, same seed = same training subset; results/tables/paired_pretrained_vs_scratch.csv)
+pct: mean diff [95% CI] (p), paired t-test across seeds
+1% (n=5):   +0.203 (p=0.022)     2% (n=5):   +0.258 (p=0.008)
+5% (n=5):   +0.014 (p=0.73)      10% (n=5):  +0.052 (p=0.32)
+25% (n=3):  -0.003 (p=0.69)      50% (n=3):  -0.013 (p=0.41)     100% (n=3): +0.015 (p=0.62)
+(fill in the CIs from the table)
+- Pre-training advantage is statistically detectable at 1-2% only. With 7 comparisons, 2% (p=0.008)
+  only just misses a Bonferroni threshold (0.007), so we treat p-values as descriptive.
+- At >=5% we find no detectable difference. This is absence of evidence, not proof of equality:
+  the 95% CI at 5-10% (n=5) spans several accuracy points, so differences of up to ~0.1 cannot be excluded.
+- Crossover: between 2% and 5% of the pool (89-221 images); not resolvable more finely with the sizes tested.
