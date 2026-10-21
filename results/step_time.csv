@@ -1,0 +1,4 @@
+mode,sec_per_step,trainable_params,device
+full,0.10408814236005128,11177538,cuda
+partial,0.044257651299994906,8394754,cuda
+frozen,0.031096668760001195,1026,cuda
