@@ -165,13 +165,26 @@ def lowdata():
 
 
 def cost():
+    """Cost vs performance. Cost = estimated training time to the selected checkpoint
+    = (optimiser steps up to best epoch) x (measured seconds per step for that mode).
+    Needs results/step_time.csv from `python src/bench_step.py`. Raw wall-clock is also kept
+    in the table but is NOT used for the plot: it is dominated by data loading, per-epoch
+    validation (~800 images) and GPU load, not by the strategy's compute."""
     d = _lowdata_frame()
-    m = d.groupby(["cond", "pct"]).agg(bal=(METRIC, "mean"), time=("train_time_s", "mean"),
-                                       params=("trainable_params", "first")).reset_index()
+    st = R / "step_time.csv"
+    if not st.exists():
+        sys.exit("missing results/step_time.csv - run: python src/bench_step.py")
+    sps = pd.read_csv(st).set_index("mode")["sec_per_step"]
+    # scratch/full has the same per-step cost as pretrained/full
+    d["steps_to_best"] = d["best_epoch"] * np.maximum(1, d["n_train"] // 32)
+    d["est_time"] = d["steps_to_best"] * d["mode"].map(sps)
+    m = d.groupby(["cond", "pct"]).agg(
+        bal=(METRIC, "mean"), auroc=("test_auroc", "mean"), est_time=("est_time", "mean"),
+        wall_time=("train_time_s", "mean"), params=("trainable_params", "first")).reset_index()
     m.to_csv(TAB / "cost_vs_performance.csv", index=False)
     pcts = sorted(m.pct.unique())
     fig, axes = plt.subplots(1, 2, figsize=(10, 4))
-    for ax, key, xl in [(axes[0], "time", "training time (s, log scale)"),
+    for ax, key, xl in [(axes[0], "est_time", "est. training time to best epoch (s, log scale)"),
                         (axes[1], "params", "trainable parameters (log scale)")]:
         for c in COLOR:
             s = m[m.cond == c].sort_values("pct")
@@ -187,7 +200,6 @@ def cost():
     axes[0].legend(frameon=False, fontsize=8)
     fig.tight_layout(); fig.savefig(FIG / "cost_vs_performance.png", dpi=200)
     print(m.round(3).to_string(index=False))
-
 
 if __name__ == "__main__":
     cmds = dict(lr=lr, imbalance=imbalance, grid=grid, lowdata=lowdata, cost=cost)
