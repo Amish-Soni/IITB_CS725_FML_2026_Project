@@ -46,7 +46,7 @@ def style(ax, xlabel, ylabel, title):
 
 
 def ms(x):
-    return f"{x.mean():.3f} ± {x.std(ddof=0):.3f}"
+    return f"{x.mean():.3f} ± {x.std(ddof=1):.3f}"
 
 
 # ---------------------------------------------------------------- step 5
@@ -113,7 +113,7 @@ def grid():
     ax.set_xscale("log"); ax.set_xticks(sorted(d.pct.unique()))
     ax.set_xticklabels([f"{p}%" for p in sorted(d.pct.unique())])
     ax.legend(frameon=False)
-    style(ax, "training data used (log scale)", "test balanced accuracy (mean ± std over seeds)",
+    style(ax, "training data used (log scale)", "test balanced accuracy (mean ± std, seeds)",
           "Data-starvation curve")
     fig.tight_layout(); fig.savefig(FIG / "data_starvation_curve.png", dpi=200)
 

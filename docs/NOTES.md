@@ -1,5 +1,4 @@
 # Design decisions log
-
 Working notes for the CS725 project "The Data Starvation Experiment" (chest X-ray pneumonia,
 ResNet-18). Everything here feeds the "Methodology", "Results" and "Limitations" sections of the
 final report. All numbers come from `results/*.csv` and `results/tables/*.csv`.

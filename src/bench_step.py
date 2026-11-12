@@ -16,7 +16,7 @@ import pandas as pd
 import torch
 import torch.nn as nn
 
-from models import build_model, count_trainable
+from models import MODES, build_model, count_trainable
 
 
 def bench(mode, batch, size, device, warmup=10, steps=50):
@@ -57,7 +57,7 @@ def main():
     args = ap.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     rows = []
-    for mode in ["full", "partial", "frozen"]:
+    for mode in MODES:
         sec, n = bench(mode, args.batch_size, args.img_size, device, steps=args.steps)
         rows.append(dict(mode=mode, sec_per_step=sec, trainable_params=n, device=str(device)))
         print(f"{mode:8s} {sec * 1000:7.1f} ms/step   trainable={n:,}")
