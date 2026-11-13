@@ -27,7 +27,8 @@ final report. All numbers come from `results/*.csv` and `results/tables/*.csv`.
    threshold/score shift on NORMAL test images, not a loss of ranking ability (see "Diagnosing the
    validation-to-test gap").
 7. Reviewer checks: no pretraining overlap by chronology; no exact duplicates across splits; no
-   excess of near-duplicates between test/validation and train (see "Reviewer feedback").
+   excess of near-copies between test/validation and train (a small overall similarity shift for
+   test pneumonia images is noted; see "Reviewer feedback").
 
 ## Splits
 - Test set = official Kermany test set (624 images: 234 NORMAL / 390 PNEUMONIA), fixed, never used
@@ -274,12 +275,21 @@ Source: `src/check_duplicates.py`, `results/tables/duplicate_summary.csv`, `near
 `near_duplicate_pairs.csv`, `dedup_sensitivity.csv`, figures `near_duplicates.png`, `closest_pairs.png`.
 - Exact duplicates (identical bytes): within pool 36 images in 17 groups (19 extra copies), within val
   14 images / 7 groups, within test 12 / 6; **none across** pool-val, pool-test, val-test.
-- Near-duplicates: 256-bit difference hash, distance to the nearest training image. Median 34
-  (val), 32 (test), 34 (pool vs other patients of the pool); minimum 15 for val and test (11 in the
-  pool). Pairs within 16 bits: val 3/812 (0.4%), test 2/624 (0.3%), pool baseline 22/4420 (0.5%).
-  The test and val distances are not smaller than the within-pool baseline, so there is no excess of near
-  copies. The six closest test/train pairs were inspected visually: all are different patients
-  with similar framing, not the same image.
+- Near-duplicates: 256-bit difference hash, distance to the nearest training image (0 = identical).
+  Minimum 15 bits for val and test (11 in the pool). Share of images within 16 / 20 bits of a
+  training image: test 0.32% / 2.4%, val 0.37% / 2.7%, pool baseline (other patients) 0.50% / 3.0%.
+  So there is **no excess of very close matches**: the lower tail is, if anything, thinner for test.
+  The six closest test/train pairs were inspected visually: all are different patients with
+  similar framing, not the same image.
+- The whole distribution is not identical, though. Overall, test images are slightly closer to the
+  pool than validation images (median 32 vs 34 bits; Mann-Whitney p = 1.4e-06 vs val, 8.3e-08 vs the
+  pool baseline). Split by class (`near_duplicates_by_class.csv`): NORMAL shows no difference (median
+  31 / 30 / 31, p = 0.78), the shift is entirely in PNEUMONIA (median 33 for test vs 36 for val and
+  pool, p < 1e-4) and it appears from about 24 bits upwards (within 24 / 28 / 32 bits: test 12 / 30 /
+  50% vs val 10 / 23 / 40%), not in the near-copy tail. We read this as test pneumonia images
+  being somewhat more typical (similar acquisition style) than the validation ones, not as copies.
+  Not explained further. Leakage would make test results better than validation; they are lower
+  (balanced accuracy 0.85-0.89 vs 0.96-0.99), and test pneumonia recall is the same as on val.
 - Dropping the 6 duplicated test images (extra copies) changes balanced accuracy by -0.002 to +0.003
   and AUROC by at most 0.0005 across the 9 saved runs: duplicates do not move the results.
 - The 19 duplicate copies inside the training pool (0.4% of images) were kept; at this size they
