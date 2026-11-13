@@ -123,6 +123,27 @@ def main():
     print("Reading: leakage would show up as many small distances for test (or val) that the baseline "
           "does not have, and as small p-values here.")
 
+    # same comparison within each class, and by threshold: a shift of the whole distribution
+    # (e.g. different class mix) is not leakage; near-copies would show up in the lower tail.
+    rows = []
+    for lab, nm in [(0, "NORMAL"), (1, "PNEUMONIA")]:
+        a_ = d_test[(test.label == lab).values]; b_ = d_val[(val.label == lab).values]
+        c_ = d_pool[(pool.label == lab).values]
+        rows.append(dict(cls=nm, n_test=len(a_), n_val=len(b_), n_pool=len(c_),
+                         median_test=np.median(a_), median_val=np.median(b_), median_pool=np.median(c_),
+                         p_test_lt_val=stats.mannwhitneyu(a_, b_, alternative="less").pvalue,
+                         p_test_lt_pool=stats.mannwhitneyu(a_, c_, alternative="less").pvalue))
+    cls_tab = pd.DataFrame(rows)
+    cls_tab.round(4).to_csv(tab / "near_duplicates_by_class.csv", index=False)
+    print("\nSame comparison within each class:")
+    print(cls_tab.round(4).to_string(index=False))
+    tail = pd.DataFrame([{"threshold_bits": t_, "test_%": 100 * (d_test <= t_).mean(),
+                          "val_%": 100 * (d_val <= t_).mean(), "pool_%": 100 * (d_pool <= t_).mean()}
+                         for t_ in (16, 20, 24, 28, 32)])
+    tail.round(2).to_csv(tab / "near_duplicates_tail.csv", index=False)
+    print("\nShare of images whose nearest training image is within T bits:")
+    print(tail.round(2).to_string(index=False))
+
     pairs = []
     for name, df, d, idx in [("test", test, d_test, i_test), ("val", val, d_val, i_val)]:
         for q in np.argsort(d)[:a.n_pairs]:

@@ -1,0 +1,3 @@
+cls,n_test,n_val,n_pool,median_test,median_val,median_pool,p_test_lt_val,p_test_lt_pool
+NORMAL,234,220,1129,31.0,30.0,31.0,0.784,0.7686
+PNEUMONIA,390,592,3291,33.0,36.0,36.0,0.0,0.0
