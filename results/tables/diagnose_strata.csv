@@ -1,0 +1,25 @@
+init,mode,pct,group,split,n_images,recall
+pretrained,full,10,NORMAL IM-* files,test,69.0,0.802
+pretrained,full,10,NORMAL IM-* files,val,97.0,0.983
+pretrained,full,10,NORMAL2-IM-* files,test,165.0,0.655
+pretrained,full,10,NORMAL2-IM-* files,val,123.0,0.935
+pretrained,full,10,PNEUMONIA bacteria,test,242.0,0.99
+pretrained,full,10,PNEUMONIA bacteria,val,385.0,0.976
+pretrained,full,10,PNEUMONIA virus,test,148.0,0.993
+pretrained,full,10,PNEUMONIA virus,val,207.0,0.987
+pretrained,full,100,NORMAL IM-* files,test,69.0,0.841
+pretrained,full,100,NORMAL IM-* files,val,97.0,0.993
+pretrained,full,100,NORMAL2-IM-* files,test,165.0,0.709
+pretrained,full,100,NORMAL2-IM-* files,val,123.0,0.984
+pretrained,full,100,PNEUMONIA bacteria,test,242.0,0.993
+pretrained,full,100,PNEUMONIA bacteria,val,385.0,0.996
+pretrained,full,100,PNEUMONIA virus,test,148.0,0.998
+pretrained,full,100,PNEUMONIA virus,val,207.0,0.989
+scratch,full,100,NORMAL IM-* files,test,69.0,0.937
+scratch,full,100,NORMAL IM-* files,val,97.0,0.99
+scratch,full,100,NORMAL2-IM-* files,test,165.0,0.756
+scratch,full,100,NORMAL2-IM-* files,val,123.0,0.976
+scratch,full,100,PNEUMONIA bacteria,test,242.0,0.986
+scratch,full,100,PNEUMONIA bacteria,val,385.0,0.98
+scratch,full,100,PNEUMONIA virus,test,148.0,0.991
+scratch,full,100,PNEUMONIA virus,val,207.0,0.976

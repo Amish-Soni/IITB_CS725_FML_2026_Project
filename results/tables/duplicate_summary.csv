@@ -1,0 +1,7 @@
+scope,n_images_affected,n_groups
+within train_pool,36,17
+within val,14,7
+within test,12,6
+train_pool & val,0,0
+train_pool & test,0,0
+val & test,0,0

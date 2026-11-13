@@ -1,0 +1,4 @@
+comparison,n,min,p05,median,mean,n_le_8,n_le_16,n_le_32
+val -> train pool,812,15,22.0,34.0,35.4,0,3,324
+test -> train pool,624,15,22.0,32.0,33.1,0,2,315
+train pool -> other patients of train pool,4420,11,22.0,34.0,35.1,0,22,1813
